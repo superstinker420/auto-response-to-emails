@@ -28,7 +28,7 @@ encodingsP = "encodings.pickle"
 
 SMTP_SERVER = 'smtp.gmail.com' #Email Server (don't change!)
 SMTP_PORT = 587 #Server Port (don't change!)
-GMAIL_USERNAME = 'you@gmail.com' #change this to match your gmail account
+GMAIL_USERNAME = 'your@gmail.com' #change this to match your gmail account
 GMAIL_PASSWORD = 'yourPassword' #change this to match your gmail password
 
 #Set GPIO pins to use BCM pin numbers
