@@ -127,14 +127,14 @@ while True:
 					currentname = name
 					print(currentname)
         
-        				image = '/home/pi/Desktop/image.jpg'
-        				camera.capture(image)
-        				sendTo = 'anotheremail@email.com'
-        				emailSubject = "Button Press Detected!"
-        				emailContent = "The button has been pressed at: " + time.ctime()
-        				sender.sendmail(sendTo, emailSubject, emailContent, image)
-        				print("Email Sent")
-       					time.sleep(0.1)
+					image = '/home/pi/Desktop/image.jpg'
+					camera.capture(image)	
+					sendTo = 'anotheremail@email.com'	
+					emailSubject = "Button Press Detected!"
+					emailContent = "The button has been pressed at: " + time.ctime()	
+					sender.sendmail(sendTo, emailSubject, emailContent, image)
+					print("Email Sent")	
+					time.sleep(0.1)
 				
 					servo.angle = (60)
 					time.sleep(10)
