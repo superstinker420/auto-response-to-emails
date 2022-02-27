@@ -8,14 +8,18 @@ from picamera import PiCamera
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-
 from imutils.video import VideoStream
 from imutils.video import FPS
+from gpiozero import AngularServo
 import face_recognition
 import imutils
 import pickle
 import time
 import cv2
+
+servo =AngularServo(18, initial_angle=0, min_pulse_width=0.0006, max_pulse_width=0.0023)
+
+servo.angle = (-10)
 
 #Initialize 'currentname' to trigger only when a new person is identified.
 currentname = "unknown"
@@ -117,19 +121,25 @@ while True:
 			name = max(counts, key=counts.get)
 
 			#If someone in your dataset is identified, print their name on the screen
-			if currentname != name:
-				currentname = name
-				print(currentname)
+			while True: 
+			
+				if currentname != name:
+					currentname = name
+					print(currentname)
         
-        image = '/home/pi/Desktop/image.jpg'
-        camera.capture(image)
-        sendTo = 'anotheremail@email.com'
-        emailSubject = "Button Press Detected!"
-        emailContent = "The button has been pressed at: " + time.ctime()
-        sender.sendmail(sendTo, emailSubject, emailContent, image)
-        print("Email Sent")
-
-        time.sleep(0.1)
+        				image = '/home/pi/Desktop/image.jpg'
+        				camera.capture(image)
+        				sendTo = 'anotheremail@email.com'
+        				emailSubject = "Button Press Detected!"
+        				emailContent = "The button has been pressed at: " + time.ctime()
+        				sender.sendmail(sendTo, emailSubject, emailContent, image)
+        				print("Email Sent")
+       					time.sleep(0.1)
+				
+					servo.angle = (60)
+					time.sleep(10)
+					servo.angle = (-10)
+				
 
 		# update the list of names
 		names.append(name)
