@@ -14,7 +14,7 @@ smtp.ehlo()
 smtp.starttls()
   
 # Login with your email and password
-smtp.login('Your Email', 'Your Password')
+  smtp.login('knifymcknifer@gmail.com', 'Der3blu!')
   
   
 # send our email message 'msg' to our boss
